@@ -1,21 +1,20 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: frontend-1
+  name: hello-openshift
 spec:
-  replicas: 1  
-  selector:    
-    name: frontend
-  template:    
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-openshift
+  template:
     metadata:
-      labels:  
-        name: frontend 
+      labels:
+        app: hello-openshift
     spec:
       containers:
-      - image: openshift/hello-openshift
-        name: helloworld
+      - name: hello-openshift
+        image: openshift/hello-openshift:latest
         ports:
-        - containerPort: 8080
-          protocol: TCP
-      restartPolicy: Always
+        - containerPort: 80
 
