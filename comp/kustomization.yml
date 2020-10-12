@@ -1,0 +1,6 @@
+apiVersion:
+kind: Kustomization
+namespace: justfortest  
+
+resources:
+- ohello.yml
